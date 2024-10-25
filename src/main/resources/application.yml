@@ -12,6 +12,6 @@ server:
 dcc:
   type: db
   meta-config:
-    table: dcc_key_switch
+    table: dcc_config_key
     key_field: config_key
     value_field: config_value

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>top.kelton</groupId>
-    <artifactId>dcc-sql</artifactId>
+    <artifactId>dynamic-config-conter-component</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

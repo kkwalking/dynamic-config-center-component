@@ -66,7 +66,7 @@ public class DatabaseDccConfigListenService implements DccConfigListenService {
     @Override
     public void insertConfig(String key, String value) {
         String insertSql = buildInsertSql();
-        jdbcTemplate.execute(insertSql);
+        jdbcTemplate.update(insertSql,key, value);
 
     }
 
