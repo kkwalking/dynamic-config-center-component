@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:13306/dcc?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# 其他配置，如端口号等
+server:
+  port: 8080
+
+dcc:
+  type: db
+  meta-config:
+    table: dcc_key_switch
+    key_field: config_key
+    value_field: config_value
