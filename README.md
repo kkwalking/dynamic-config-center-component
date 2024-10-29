@@ -2,8 +2,9 @@
 
 已支持特性
 - 配置中心采用数据库方式
-- 
+- 制作成spring boot starter以支持即插即用
+
+
 待实现特性
 - 配置中心支持zookeeper
 - 配置中心支持redis
-- 制作成spring boot starter以支持即插即用

@@ -2,7 +2,6 @@ package top.kelton.dcc.listen.db;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Repository;
 import top.kelton.dcc.config.DccConfigProperties;
 import top.kelton.dcc.listen.DccConfigListenService;
 

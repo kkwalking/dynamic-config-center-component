@@ -1,7 +1,6 @@
 package top.kelton.dcc.processor;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import top.kelton.dcc.annotation.DccValue;
@@ -110,7 +109,7 @@ public class DccProcessor implements BeanPostProcessor {
             if (field.isAnnotationPresent(DccValue.class)) {
                 // 从数据库获取值，否则设置默认值 null
                 DccValue annotation = field.getAnnotation(DccValue.class);
-                if (StringUtils.isBlank(annotation.value())) {
+                if (annotation.value() == null || annotation.value().trim().isEmpty()) {
                     throw new RuntimeException("Dcc annotation value is required");
                 }
                 String[] splits = annotation.value().split(":");
