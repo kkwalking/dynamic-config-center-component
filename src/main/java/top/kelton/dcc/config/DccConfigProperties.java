@@ -17,6 +17,9 @@ public class DccConfigProperties {
 
     private MetaConfig metaConfig;
 
+    private LogConfig logConfig;
+
+
     public String getType() {
         return type;
     }
@@ -31,6 +34,14 @@ public class DccConfigProperties {
 
     public void setMetaConfig(MetaConfig metaConfig) {
         this.metaConfig = metaConfig;
+    }
+
+    public LogConfig getLogConfig() {
+        return logConfig;
+    }
+
+    public void setLogConfig(LogConfig logConfig) {
+        this.logConfig = logConfig;
     }
 
     public static class MetaConfig {
@@ -60,6 +71,18 @@ public class DccConfigProperties {
 
         public void setValueField(String valueField) {
             this.valueField = valueField;
+        }
+    }
+
+    public static class LogConfig {
+        private String enable;
+
+        public String getEnable() {
+            return enable;
+        }
+
+        public void setEnable(String enable) {
+            this.enable = enable;
         }
     }
 }

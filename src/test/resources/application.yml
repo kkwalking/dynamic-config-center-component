@@ -15,3 +15,5 @@ dcc:
     table: dcc_config_key
     key_field: config_key
     value_field: config_value
+  log-config:
+    enable: true

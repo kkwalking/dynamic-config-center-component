@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import top.kelton.dcc.annotation.DccValue;
+import top.kelton.dcc.config.DccConfigProperties;
 import top.kelton.dcc.listen.db.DatabaseDccConfigListenService;
 
 import javax.annotation.PreDestroy;
@@ -47,10 +48,13 @@ public class DccProcessor implements BeanPostProcessor {
     private final DatabaseDccConfigListenService databaseDccConfigListenService;
     private final ScheduledExecutorService scheduler;
 
+    private final DccConfigProperties dccConfigProperties;
+
     private final Map<String, List<BeanField>> beanMap = new ConcurrentHashMap<>();
 
-    public DccProcessor(DatabaseDccConfigListenService databaseDccConfigListenService) {
+    public DccProcessor(DatabaseDccConfigListenService databaseDccConfigListenService, DccConfigProperties dccConfigProperties) {
         this.databaseDccConfigListenService = databaseDccConfigListenService;
+        this.dccConfigProperties = dccConfigProperties;
         this.scheduler = Executors.newSingleThreadScheduledExecutor();
 
         // 每3秒从dccDBService获取配置值，设置到对应的属性值中
@@ -79,7 +83,9 @@ public class DccProcessor implements BeanPostProcessor {
                         if (!oldValue.equals(configValue)) {
                             field.setAccessible(true);
                             field.set(bf.getBean(), configValue);
-                            log.info("成功更新DCC属性 key:{}, old value:{}, new value:{}", dccKey, oldValue, configValue);
+                            if ("true".equalsIgnoreCase(dccConfigProperties.getLogConfig().getEnable())) {
+                                log.info("成功更新DCC属性 key:{}, old value:{}, new value:{}", dccKey, oldValue, configValue);
+                            }
                         }
                     } catch (IllegalAccessException e) {
                         // 记录日志或其他异常处理

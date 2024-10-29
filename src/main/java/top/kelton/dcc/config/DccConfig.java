@@ -24,7 +24,7 @@ public class DccConfig {
 
     @Bean
     @ConditionalOnMissingBean
-    public DccProcessor dccProcessor(DatabaseDccConfigListenService listenService) {
-        return new DccProcessor(listenService);
+    public DccProcessor dccProcessor(DatabaseDccConfigListenService listenService, DccConfigProperties dccConfigProperties) {
+        return new DccProcessor(listenService, dccConfigProperties);
     }
 }
