@@ -1,13 +1,10 @@
-package top.kelton.dcc;
+package top.kelton.dcc.processor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
 import top.kelton.dcc.annotation.DccValue;
-import top.kelton.dcc.config.DccConfigProperties;
 import top.kelton.dcc.listen.db.DatabaseDccConfigListenService;
 
 import javax.annotation.PreDestroy;
@@ -26,8 +23,6 @@ import java.util.concurrent.TimeUnit;
  * @create: 2024-10-25 10:45
  **/
 @Slf4j
-@Configuration
-@EnableConfigurationProperties(DccConfigProperties.class)
 public class DccProcessor implements BeanPostProcessor {
     /**
      * 内部类，用于存储 bean 和对应的字段

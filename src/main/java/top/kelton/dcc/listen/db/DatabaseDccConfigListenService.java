@@ -14,7 +14,6 @@ import java.util.List;
  * @create: 2024-10-25 11:10
  **/
 
-@Repository
 public class DatabaseDccConfigListenService implements DccConfigListenService {
 
 
